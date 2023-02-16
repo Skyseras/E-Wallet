@@ -1,21 +1,13 @@
 # E-Wallet
 E-Wallet is more than a bank, it's a platform that reimagines financial services for a globalized world, throwing old-fashioned banks and clunky software out the window.
 
-​
-
 Today, the company wants to migrate its own monolithic system in charge of monetary operations to a microservices architecture.
 
-​
-
-You are led to build the following different microservices:
+## You are led to build the following different microservices:
 
 ### 1: the microservice that will be responsible for single sign-on (SSO), access control, rate limiting, resilience, security.
 
-​
-
 ### 2: the body responsible for administering the wallets
-
-​
 
 ### 3: the system capable of managing operations and transactions.
 
