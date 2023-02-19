@@ -5,6 +5,7 @@ import com.wspro.transactionservice.model.Transaction;
 import com.wspro.transactionservice.model.TransactionType;
 import com.wspro.transactionservice.service.TransactionService;
 import com.wspro.transactionservice.Dto.ResponseDto;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -18,6 +19,7 @@ public class TransactionController {
 
 	/*--------------------------------------------  Add New Transaction  ------------------------------------------------*/
 	@PostMapping("/add")
+	@CircuitBreaker(name = "wallet", fallbackMethod = "fallBack")
 	public ResponseDto addTransaction(@RequestBody TransactionDto transactionDto){
 		Transaction transaction = new Transaction();
 		transaction.setAmount(transactionDto.getAmount());
@@ -29,6 +31,11 @@ public class TransactionController {
 		}
 		return transactionService.addTransaction(transaction);
 	}
+
+	public ResponseDto fallBack(TransactionDto transactionDto, Throwable throwable){
+		return new ResponseDto("FallBack response","please retry later");
+	}
+
 	/*--------------------------------------------  List All transactions  ------------------------------------------------*/
 	@GetMapping("/list")
 	public ResponseDto findAll(){

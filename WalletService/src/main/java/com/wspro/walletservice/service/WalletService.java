@@ -3,7 +3,6 @@ package com.wspro.walletservice.service;
 import com.wspro.walletservice.model.Wallet;
 import com.wspro.walletservice.Dto.ResponseDto;
 
-import java.math.BigDecimal;
 
 public interface WalletService {
 	ResponseDto addWallet(Wallet wallet);

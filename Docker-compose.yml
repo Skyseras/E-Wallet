@@ -1,0 +1,85 @@
+version: '3.7'
+name: Ewallet
+services:
+  UserService:
+    image: userservice
+    container_name: UserService-container
+    build: UserService/
+    ports:
+      - "8484:8484"
+    depends_on:
+      postgresdb:
+        condition: service_started
+      EurekaServer:
+        condition: service_started
+    networks:
+      - net.ewallet
+
+  WalletService:
+    image: walletservice
+    container_name: WalletService-container
+    build: WalletService/
+    ports:
+      - "8383:8383"
+    depends_on:
+      - UserService
+      - postgresdb
+      - EurekaServer
+    networks:
+      - net.ewallet
+
+  TransactionService:
+    image: transactionservice
+    container_name: TransactionService-container
+    build: TransactionService/
+    ports:
+      - "8585:8585"
+    depends_on:
+      - WalletService
+      - mongodb
+      - EurekaServer
+    networks:
+      - net.ewallet
+  EurekaServer:
+    image: eurekaserver
+    container_name: EurekaServer-container
+    build: EurekaServer/
+    ports:
+      - "8761:8761"
+    networks:
+      - net.ewallet
+
+  GatewayService:
+    image: gatewayservice
+    container_name: GatewayService-container
+    build: GatewayService/
+    ports:
+      - "9191:9191"
+    networks:
+      - net.ewallet
+
+  mongodb:
+    image: mongo
+    container_name: mongo-container
+    ports:
+      - "27017:27017"
+    networks:
+      - net.ewallet
+
+  postgresdb:
+    image: postgres:latest
+    hostname: postgresql
+    container_name: postgres-container
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=postgres
+    networks:
+      - net.ewallet
+
+networks:
+  net.ewallet:
+    name: net.ewallet
+    driver: bridge
