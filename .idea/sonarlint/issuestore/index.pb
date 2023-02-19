@@ -31,8 +31,6 @@ M
 TransactionService/Dockerfile,f\2\f2f2f6ef8ed202ad18077b6aff4021184746245d
 G
 EurekaServer/Dockerfile,2\9\2968244e0cbf309374891086ca9a57cbec2fbdd3
-h
-8GatewayService/src/main/resources/application.properties,8\1\819afdf3d0f4c4ee6d78bb2a0eff98c412854b2d
 f
 6EurekaServer/src/main/resources/application.properties,0\e\0ed6104852ee32e18d5d00ca26f1ec138977ad77
 e
@@ -41,3 +39,13 @@ g
 7WalletService/src/main/resources/application.properties,0\b\0bdd0f94d96033854dc9dda5c75c25808ba3cac4
 B
 Docker-compose.yml,9\5\9538dfe4447ddc8dfc09746351d83d71207b0e21
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+Ñ
+TGatewayService/src/main/java/com/wspro/gatewayservice/GatewayServiceApplication.java,1\d\1d798f77a628984b149c7cdd5e265ea90a1da7dc
+h
+8GatewayService/src/main/resources/application.properties,8\1\819afdf3d0f4c4ee6d78bb2a0eff98c412854b2d
+Å
+QUserService/src/main/java/com/wspro/userservice/controller/AppUserController.java,d\e\dea83e02cbe45ddc8da2b9ba3edd47397e34d498
+t
+DUserService/src/main/java/com/wspro/userservice/config/JwtUtile.java,0\7\079458daa5fa4ecd823dd8506ff8dab6f32b7211
